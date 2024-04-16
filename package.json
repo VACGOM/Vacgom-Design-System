@@ -1,0 +1,19 @@
+{
+  "name": "vacgom-design-system",
+  "version": "1.0.0",
+  "description": "Vacgom's Design System Packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VACGOM/Vacgom-Design-System.git"
+  },
+  "author": "osohyun0224",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VACGOM/Vacgom-Design-System/issues"
+  },
+  "homepage": "https://github.com/VACGOM/Vacgom-Design-System#readme"
+}
