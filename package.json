@@ -4,16 +4,35 @@
   "description": "Vacgom's Design System Packages",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_110e2bf1eda4f6c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VACGOM/Vacgom-Design-System.git"
   },
-  "author": "osohyun0224",
+  "author": {
+    "name": "osohyun0224"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VACGOM/Vacgom-Design-System/issues"
   },
-  "homepage": "https://github.com/VACGOM/Vacgom-Design-System#readme"
+  "homepage": "https://github.com/VACGOM/Vacgom-Design-System#readme",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.3.3",
+    "@storybook/addon-essentials": "^8.0.8",
+    "@storybook/addon-interactions": "^8.0.8",
+    "@storybook/addon-links": "^8.0.8",
+    "@storybook/addon-onboarding": "^8.0.8",
+    "@storybook/blocks": "^8.0.8",
+    "@storybook/react": "^8.0.8",
+    "@storybook/react-vite": "^8.0.8",
+    "@storybook/test": "^8.0.8",
+    "chromatic": "^11.3.0",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.0.8"
+  }
 }
