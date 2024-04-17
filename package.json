@@ -6,13 +6,16 @@
   "scripts": {
     "test": "npm run test",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_110e2bf1eda4f6c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VACGOM/Vacgom-Design-System.git"
   },
-  "author": "osohyun0224",
+  "author": {
+    "name": "osohyun0224"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VACGOM/Vacgom-Design-System/issues"
