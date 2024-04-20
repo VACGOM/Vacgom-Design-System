@@ -3,37 +3,40 @@ name: 'Chromatic Deployment'
 on:
   push:
     branches: ['master']
+  pull_request_target:
+    branches: ['master']
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
-
       - name: Dependency install
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-
       - name: Publish to Chromatic
         id: chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Comment PR
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         uses: thollander/actions-comment-pull-request@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: '🚀 Storybook published: ${{ steps.chromatic.outputs.storybookUrl }}'
+    
