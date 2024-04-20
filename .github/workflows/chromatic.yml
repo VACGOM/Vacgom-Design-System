@@ -6,11 +6,16 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - run: yarn
-      - uses: chromaui/action@v1
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v1
+          - name: Install Dependencies
+            run: npm install
+          - name: Build Storybook
+            run: npm run build-storybook --output-dir /tmp/chromatic--1852-xqjpeSXOepYf
+          - uses: chromaui/action@v1 
+            with:
+              projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+              token: ${{ secrets.GITHUB_TOKEN }}
+    
+
