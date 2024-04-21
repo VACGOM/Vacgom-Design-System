@@ -28,12 +28,17 @@
     "@storybook/addon-links": "^8.0.8",
     "@storybook/addon-onboarding": "^8.0.8",
     "@storybook/blocks": "^8.0.8",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^8.0.8",
     "@storybook/react-vite": "^8.0.8",
     "@storybook/test": "^8.0.8",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
     "chromatic": "^11.3.0",
     "prop-types": "^15.8.1",
+    "sass": "^1.75.0",
     "storybook": "^8.0.8",
+    "typescript": "^5.4.5",
     "vite": "^5.2.10"
   }
 }
