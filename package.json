@@ -1,6 +1,6 @@
 {
   "name": "vacgom-design-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vacgom's Design System Packages",
   "main": "index.js",
   "scripts": {
