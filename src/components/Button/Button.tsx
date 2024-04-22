@@ -1,34 +1,30 @@
-import React from 'react';
-import './Button.styles.css';
+import React from "react";
+import {
+  buttonStyling,
+  getSizeStyling,
+  getVariantStyling,
+} from "./Button.styles";
+import type { Size } from "@type/index";
+import type { ComponentPropsWithRef, ForwardedRef } from "react";
+import { forwardRef } from "react";
 
-export interface ButtonProps {
-  primary?: boolean;
-  backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
-  label: string;
-  onClick?: () => void;
+export interface ButtonProps extends ComponentPropsWithRef<"button"> {
+  size?: Extract<Size, "small" | "medium" | "large">;
+  variant?: "primary" | "secondary" | "outline" | "disabled";
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  primary = false,
-  backgroundColor,
-  size = 'medium',
-  label,
-  ...props
-}) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  const sizeClass = `storybook-button--${size}`;
-  return (
-    <button
-      type="button"
-      className={`storybook-button ${mode} ${sizeClass}`}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ size = "medium", variant = "primary", children, ...attributes }, ref) => {
+    return (
+      <button
+        ref={ref}
+        css={[buttonStyling, getVariantStyling(variant), getSizeStyling(size)]}
+        {...attributes}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
 export default Button;
-

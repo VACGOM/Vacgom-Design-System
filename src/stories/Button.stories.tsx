@@ -1,46 +1,124 @@
-import { Meta, StoryFn } from '@storybook/react';
-import { Button, ButtonProps } from '@components/Button/Button';
+/** @jsxImportSource @emotion/react */
+import { containerStyle, informationStyle } from './style';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
-  title: 'Components/Button',
+import type { ButtonProps } from '@components/Button/Button';
+import Button from '@components/Button/Button';
+
+const meta = {
+  title: 'Button',
   component: Button,
-  parameters: {
-    layout: 'centered',
+  argTypes: {
+    variant: {
+      control: { type: 'radio' },
+      options: ['primary', 'secondary', 'outline', 'disabled'],
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['small', 'medium', 'large'],
+    },
+    children: {
+      control: { type: 'text' },
+    },
+  },
+  args: {
+    variant: 'primary',
+    size: 'large',
+    children: 'Button',
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const createButtonStory = (variant: ButtonProps['variant']) => ({
+  args: {
+    variant,
   },
   argTypes: {
-    backgroundColor: { control: 'color' },
-    size: {
-      options: ['small', 'medium', 'large'],
-      control: { type: 'radio' },
-    },
-    primary: {
-      control: { type: 'boolean' },
+    variant: {
+      control: false,
     },
   },
-} as Meta<ButtonProps>;
+});
 
-const Template: StoryFn<ButtonProps> = (args) => <Button {...args} />;
+export const Playground: Story = {};
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const Variants: Story = {
+  render: ({ size, children }) => {
+    return (
+      <ul css={containerStyle}>
+        <li css={informationStyle}>
+          <h6>Primary</h6>
+          <Button variant="primary" size={size}>
+            {children}
+          </Button>
+        </li>
+        <li css={informationStyle}>
+          <h6>Secondary</h6>
+          <Button variant="secondary" size={size}>
+            {children}
+          </Button>
+        </li>
+        <li css={informationStyle}>
+          <h6>Outline</h6>
+          <Button variant="outline" size={size}>
+            {children}
+          </Button>
+        </li>
+        <li css={informationStyle}>
+          <h6>Disabled</h6>
+          <Button variant="disabled" size={size}>
+            {children}
+          </Button>
+        </li>
+      </ul>
+    );
+  },
+  argTypes: {
+    variant: {
+      control: false,
+    },
+  },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  primary: false,
-  label: 'Button',
+export const Sizes: Story = {
+  render: ({ variant, children }) => {
+    return (
+      <ul css={containerStyle}>
+        <li css={informationStyle}>
+          <h6>Small</h6>
+          <Button variant={variant} size="small">
+            {children}
+          </Button>
+        </li>
+        <li css={informationStyle}>
+          <h6>Medium</h6>
+          <Button variant={variant} size="medium">
+            {children}
+          </Button>
+        </li>
+        <li css={informationStyle}>
+          <h6>Large</h6>
+          <Button variant={variant} size="large">
+            {children}
+          </Button>
+        </li>
+      </ul>
+    );
+  },
+  argTypes: {
+    size: {
+      control: false,
+    },
+  },
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+export const Primary: Story = createButtonStory('primary');
+
+export const Secondary: Story = createButtonStory('secondary');
+
+export const Outline: Story = createButtonStory('outline');
+
+export const Danger: Story = createButtonStory('disabled');
