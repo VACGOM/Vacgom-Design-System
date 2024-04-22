@@ -17,14 +17,18 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const sizeClass = `storybook-button--${size}`;
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor ? { backgroundColor } : undefined}
+      className={`storybook-button ${mode} ${sizeClass}`}
+      style={{ backgroundColor }}
       {...props}
     >
       {label}
     </button>
   );
 };
+
+export default Button;
+

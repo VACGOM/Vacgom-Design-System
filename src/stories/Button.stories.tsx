@@ -2,13 +2,20 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Button, ButtonProps } from '@components/Button/Button';
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
   },
   argTypes: {
     backgroundColor: { control: 'color' },
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'radio' },
+    },
+    primary: {
+      control: { type: 'boolean' },
+    },
   },
 } as Meta<ButtonProps>;
 
@@ -22,6 +29,7 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  primary: false,
   label: 'Button',
 };
 
