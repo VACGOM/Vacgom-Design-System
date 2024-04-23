@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import { Theme } from '../../styles/Theme'
 import { Colors } from '../../styles/color'
- import type { ButtonProps } from './Button';
+ import type { ButtonButtomProps } from './Button-bottom';
 
-export const getVariantStyling = (variant: Required<ButtonProps>['variant']) => {
+export const getVariantStyling = (variant: Required<ButtonButtomProps>['variant']) => {
   const style = {
     primary: css({
       backgroundColor:  Colors.Primary,
@@ -17,7 +17,7 @@ export const getVariantStyling = (variant: Required<ButtonProps>['variant']) => 
       color: Colors.Primary,
 
     }),
-    outline: css({
+    unavailable: css({
       backgroundColor: Colors.White,
 
       color: Colors.Gray700,
@@ -25,18 +25,12 @@ export const getVariantStyling = (variant: Required<ButtonProps>['variant']) => 
       border: `1px solid ${Colors.Gray200}`,
 
     }),
-    disabled: css({
-      backgroundColor: Colors.Gray100,
-
-      color: Colors.Gray500,
-
-    }),
   };
 
   return style[variant];
 };
 
-export const getSizeStyling = (size: Required<ButtonProps>['size']) => {
+export const getSizeStyling = (size: Required<ButtonButtomProps>['size']) => {
   const style = {
     large: css({
       padding: '16px 20px',
@@ -67,7 +61,6 @@ export const buttonStyling = css({
   alignItems: 'center',
 
   border: 'none',
-  borderRadius: `${Theme.borderRadius.large}`,
   outline: `0 solid ${Colors.White}`,
 
   backgroundColor: Colors.White,
