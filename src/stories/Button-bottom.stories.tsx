@@ -2,16 +2,16 @@
 import { containerStyle, informationStyle } from './style';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { ButtonProps } from '@components/Button/Button';
-import Button from '@components/Button/Button';
+import type { ButtonButtomProps } from '@components/Button-bottom/Button-bottom';
+import ButtonBottom from '@components/Button-bottom/Button-bottom';
 
 const meta = {
-  title: 'Button',
-  component: Button,
+  title: 'Button-bottom',
+  component: ButtonBottom,
   argTypes: {
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary', 'outline', 'disabled'],
+      options: ['primary', 'secondary', 'unavailable'],
     },
     size: {
       control: { type: 'radio' },
@@ -24,14 +24,14 @@ const meta = {
   args: {
     variant: 'primary',
     size: 'large',
-    children: 'Button',
+    children: 'ButtonBottom',
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonBottom>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createButtonStory = (variant: ButtonProps['variant']) => ({
+const createButtonBottomStory = (variant: ButtonButtomProps['variant']) => ({
   args: {
     variant,
   },
@@ -50,27 +50,21 @@ export const Variants: Story = {
       <ul css={containerStyle}>
         <li css={informationStyle}>
           <h6>Primary</h6>
-          <Button variant="primary" size={size}>
+          <ButtonBottom variant="primary" size={size}>
             {children}
-          </Button>
+          </ButtonBottom>
         </li>
         <li css={informationStyle}>
           <h6>Secondary</h6>
-          <Button variant="secondary" size={size}>
+          <ButtonBottom variant="secondary" size={size}>
             {children}
-          </Button>
+          </ButtonBottom>
         </li>
         <li css={informationStyle}>
-          <h6>Outline</h6>
-          <Button variant="outline" size={size}>
+          <h6>Unavailable</h6>
+          <ButtonBottom variant="unavailable" size={size}>
             {children}
-          </Button>
-        </li>
-        <li css={informationStyle}>
-          <h6>Disabled</h6>
-          <Button variant="disabled" size={size}>
-            {children}
-          </Button>
+          </ButtonBottom>
         </li>
       </ul>
     );
@@ -88,21 +82,21 @@ export const Sizes: Story = {
       <ul css={containerStyle}>
         <li css={informationStyle}>
           <h6>Small</h6>
-          <Button variant={variant} size="small">
+          <ButtonBottom variant={variant} size="small">
             {children}
-          </Button>
+          </ButtonBottom>
         </li>
         <li css={informationStyle}>
           <h6>Medium</h6>
-          <Button variant={variant} size="medium">
+          <ButtonBottom variant={variant} size="medium">
             {children}
-          </Button>
+          </ButtonBottom>
         </li>
         <li css={informationStyle}>
           <h6>Large</h6>
-          <Button variant={variant} size="large">
+          <ButtonBottom variant={variant} size="large">
             {children}
-          </Button>
+          </ButtonBottom>
         </li>
       </ul>
     );
@@ -115,10 +109,8 @@ export const Sizes: Story = {
 };
 
 
-export const Primary: Story = createButtonStory('primary');
+export const Primary: Story = createButtonBottomStory('primary');
 
-export const Secondary: Story = createButtonStory('secondary');
+export const Secondary: Story = createButtonBottomStory('secondary');
 
-export const Outline: Story = createButtonStory('outline');
-
-export const Danger: Story = createButtonStory('disabled');
+export const Outline: Story = createButtonBottomStory('unavailable');

@@ -3,17 +3,17 @@ import {
   buttonStyling,
   getSizeStyling,
   getVariantStyling,
-} from "./Button.styles";
+} from "./Button-bottom.styles";
 import type { Size } from "@type/index";
 import type { ComponentPropsWithRef, ForwardedRef } from "react";
 import { forwardRef } from "react";
 
-export interface ButtonProps extends ComponentPropsWithRef<"button"> {
+export interface ButtonButtomProps extends ComponentPropsWithRef<"button"> {
   size?: Extract<Size, "small" | "medium" | "large">;
-  variant?: "primary" | "secondary" | "outline" | "disabled";
+  variant?: "primary" | "secondary" | "unavailable";
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const ButtonButtom = forwardRef<HTMLButtonElement, ButtonButtomProps>(
   ({ size = "medium", variant = "primary", children, ...attributes }, ref) => {
     return (
       <button
@@ -27,4 +27,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-export default Button;
+export default ButtonButtom;

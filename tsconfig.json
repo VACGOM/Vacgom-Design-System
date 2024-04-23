@@ -3,6 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@type/*": ["src/type/*"],
+      "@styles/*": ["src/styles/*"],
+      "@stories/*": ["src/stories/*"]
+      
     },
     "outDir": "build",
     "module": "esnext",
@@ -18,7 +22,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
   },
   "include": [
     "src/**/*.ts",
