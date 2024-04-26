@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 import type { InputFieldProps } from '@components/InputField/InputField';
 
-import { Theme } from '@styles/Theme';
+import { Theme } from '../../styles/Theme';
 
 export const inputContainerStyling = css({
   display: 'flex',
