@@ -2,24 +2,19 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Label from '@components/TextLabel/TextLabel';
 
-const meta = {
-  title: 'Label',
+const meta: Meta<typeof Label> = {
+  title: 'TextLabel',
   component: Label,
   argTypes: {
     children: {
       control: { type: 'text' },
     },
-    required: {
-      control: { type: 'boolean' },
-    },
   },
   args: {
     children: 'Label',
-    required: false,
   },
-} satisfies Meta<typeof Label>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: StoryObj<typeof meta> = {};

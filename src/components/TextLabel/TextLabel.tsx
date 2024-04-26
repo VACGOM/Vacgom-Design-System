@@ -1,20 +1,13 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { labelStyling, requiredStyling } from '@components/TextLabel/TextLabel.style';
+import { labelStyling } from '@components/TextLabel/TextLabel.style';
 
-export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
-  required?: boolean;
-}
+export interface LabelProps extends ComponentPropsWithoutRef<'label'> {}
 
-const TextLabel = ({ id, required = false, children, ...attributes }: LabelProps) => {
+const TextLabel = ({ id, children, ...attributes }: LabelProps) => {
   return (
     <label css={labelStyling} htmlFor={id} {...attributes}>
-      {children}{' '}
-      {required && (
-        <span css={requiredStyling} aria-hidden>
-          *
-        </span>
-      )}
+      {children}
     </label>
   );
 };

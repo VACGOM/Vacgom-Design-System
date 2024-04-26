@@ -27,6 +27,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx"
-, "src/stories/TextInput.stories.tsx"  ]  
+    "src/**/*.tsx" 
+  ]  
 }
