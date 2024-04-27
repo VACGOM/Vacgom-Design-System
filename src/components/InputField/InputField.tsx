@@ -13,7 +13,7 @@ import Label from '@components/TextLabel/TextLabel';
 
 export interface InputFieldProps extends Omit<ComponentPropsWithRef<'input'>, 'size'> {
   label?: string;
-  variant?: 'default' | 'text';
+  variant?: 'default' | 'text' | 'focus' | 'error';
   size?: Extract<Size, 'small' | 'medium' | 'large'>;
   isError?: boolean;
   icon?: ReactElement;

@@ -47,6 +47,12 @@ export const getVariantStyling = (variant: Required<InputFieldProps>['variant'])
     text: css({
       backgroundColor: 'transparent',
     }),
+    focus: css({
+      backgroundColor: 'transparent',
+    }),
+    error: css({
+      backgroundColor: 'transparent',
+    }),
   };
 
   return style[variant];
